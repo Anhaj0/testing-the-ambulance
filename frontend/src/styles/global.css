@@ -1,0 +1,347 @@
+/* App-wide reset, base typography and the shell/nav layout shared by every
+   module page. Module-specific rules belong in their own styles/<module>.css
+   file instead of here. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- App shell (nav + routed page content) --- */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.app-content {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Small handoff controls reuse the existing palette and page layouts. */
+.workflow-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 9px 22px;
+  flex-shrink: 0;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.workflow-bar > span { flex: 1; min-width: 220px; }
+.workflow-bar a, .workflow-actions a, .workflow-picker > a, .triage-row a {
+  color: var(--accent-info);
+  font-size: 12px;
+  text-underline-offset: 3px;
+}
+.workflow-bar button {
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.workflow-actions { display: flex; flex-wrap: wrap; gap: 10px 16px; margin: 12px 0; }
+.workflow-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.workflow-picker label { display: grid; gap: 6px; flex: 1; font-size: 13px; min-width: 200px; }
+.workflow-picker select {
+  width: 100%;
+  color: var(--text);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font: inherit;
+  padding: 9px 12px;
+}
+.workflow-picker p { width: 100%; font-size: 13px; color: var(--accent-danger); }
+.schedule-workflow-actions { padding: 0 24px; font-size: 12px; color: var(--muted); }
+.triage-row { flex-wrap: wrap; }
+.workflow-bar :focus-visible, .workflow-actions a:focus-visible, .workflow-picker select:focus-visible {
+  outline: 2px solid var(--accent-info);
+  outline-offset: 3px;
+}
+
+/* --- Top nav --- */
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 0 22px;
+  height: 52px;
+  flex-shrink: 0;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+
+.top-nav-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.top-nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.top-nav-link {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.top-nav-link:hover {
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+.top-nav-link.active {
+  background: var(--accent-info-dim);
+  color: var(--accent-info);
+}
+
+.top-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-nav-group + .top-nav-group {
+  margin-left: 8px;
+  padding-left: 20px;
+  border-left: 1px solid var(--line);
+}
+
+.top-nav-group-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* --- Generic module placeholder page --- */
+.page-placeholder {
+  height: 100%;
+  width: 100%;
+  padding: 48px;
+  overflow-y: auto;
+}
+
+.page-placeholder h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* --- Shared small pieces (StatusBadge, EmptyState) --- */
+.status-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 5px 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-ok);
+  box-shadow: 0 0 8px var(--accent-ok);
+}
+
+.dot.err {
+  background: var(--accent-danger);
+  box-shadow: 0 0 8px var(--accent-danger);
+}
+
+.empty-note {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  padding: 8px 0;
+}
+
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-info-dim);
+  color: var(--accent-info);
+}
+.badge-muted { background: var(--panel-hover); color: var(--muted); }
+.badge-ok { background: var(--accent-ok-dim); color: var(--accent-ok); }
+.badge-danger { background: var(--accent-danger-dim); color: var(--accent-danger); }
+
+/* --- Shared stat card grid (Network Detection's StatsGrid, Scheduling's
+   FitnessScorecard) --- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.stat-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--line-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stat-card .lbl {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.stat-card.danger .num { color: var(--accent-danger); }
+.stat-card.ok .num { color: var(--accent-ok); }
+.stat-card.warning .num { color: var(--accent-warning); }
+
+/* --- Shared metric card (Resource Allocation's header stats, the
+   Dashboard's overview stats) --- */
+.resource-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.resource-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 18px 20px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.resource-card-info { border-left: 4px solid var(--accent-info); }
+.resource-card-ok { border-left: 4px solid var(--accent-ok); }
+.resource-card-warning { border-left: 4px solid var(--accent-warning); }
+.resource-card-danger { border-left: 4px solid var(--accent-danger); }
+
+.card-label {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card-value {
+  font-size: clamp(28px, 2vw, 34px);
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.1;
+}
+
+.card-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Small uppercase label above a page's h1 (Resource Allocation's header,
+   the Dashboard's header). */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Strips default <fieldset> box styling so it can wrap a form purely to
+   disable all its controls at once (e.g. while a request is in flight)
+   without affecting layout. */
+.fieldset-plain {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: contents;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-light);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}

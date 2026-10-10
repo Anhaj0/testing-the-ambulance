@@ -1,0 +1,207 @@
+/* Routing module styles. Colours/fonts come from styles/variables.css
+   (loaded globally) — reference var(--text), var(--accent-info), etc. */
+
+.routing-page {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  height: 100%;
+  width: 100%;
+}
+
+.routing-panel {
+  height: 100%;
+  overflow-y: auto;
+  padding: 48px 40px;
+  border-top: 3px solid var(--accent-info);
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.routing-page h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* --- Map --- */
+.routing-map-area {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.routing-map-area .leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+}
+
+.routing-map-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(237, 242, 247, 0.9);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  z-index: 500;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+/* --- Form --- */
+.routing-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.routing-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.routing-form input,
+.routing-form select {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.routing-form input:focus,
+.routing-form select:focus {
+  border-color: var(--accent-info);
+  background: var(--panel);
+}
+
+.routing-form select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.routing-form button {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent-info);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+.routing-form button:hover {
+  opacity: 0.88;
+}
+
+.routing-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Error --- */
+.routing-error {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 14px;
+  background: var(--accent-danger-dim);
+  border: 1px solid var(--accent-danger);
+  border-radius: var(--radius-md);
+  color: var(--accent-danger);
+  font-size: 13px;
+}
+
+/* --- Result --- */
+.routing-result {
+  margin-top: 28px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.routing-result h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.routing-result > p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.routing-node-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.routing-node-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  counter-increment: route-step;
+}
+
+.routing-node-list {
+  counter-reset: route-step;
+}
+
+.routing-node-list li::before {
+  content: counter(route-step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent-info-dim);
+  color: var(--accent-info);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.routing-node-coords {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: auto;
+}

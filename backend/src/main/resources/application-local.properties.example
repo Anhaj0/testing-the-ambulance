@@ -1,0 +1,5 @@
+# Copy this file to application-local.properties and fill in your own credentials.
+# Create the ambulance_dispatch database in PostgreSQL before starting the API.
+spring.datasource.url=jdbc:postgresql://localhost:5432/ambulance_dispatch
+spring.datasource.username=YOUR_DATABASE_USER
+spring.datasource.password=YOUR_DATABASE_PASSWORD

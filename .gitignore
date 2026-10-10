@@ -1,0 +1,14 @@
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+application-local.properties
+*.pem
+*.key
+
+# Generated dependencies, builds, and logs
+node_modules/
+target/
+dist/
+*.log
+.DS_Store

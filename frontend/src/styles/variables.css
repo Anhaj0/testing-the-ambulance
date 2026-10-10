@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Shared colour + font tokens for the whole app. Loaded once (via main.jsx)
+   and available globally as CSS custom properties — module stylesheets
+   (styles/network-detection.css, styles/triage.css, ...) just reference
+   var(--...) without re-importing this file. */
+:root {
+  /* Slate & Cool Gray Palette (Dimmed Light Theme) */
+  --bg: #e2e8f0;            /* Soft slate canvas - non-blinding */
+  --panel: #edf2f7;         /* Clean soft gray panel */
+  --panel-2: #e2e8f0;       /* Slightly deeper element background */
+  --panel-hover: #cbd5e1;   /* Active / hover state */
+  --line: #cbd5e1;          /* Subtle divider line */
+  --line-light: #94a3b8;    /* Border highlights */
+  --text: #1e293b;          /* Deep slate text for clear contrast */
+  --muted: #64748b;         /* Muted secondary text */
+
+  /* Status Colors */
+  --accent-danger: #e11d48;
+  --accent-danger-dim: rgba(225, 29, 72, 0.12);
+  --accent-ok: #059669;
+  --accent-ok-dim: rgba(5, 150, 105, 0.12);
+  --accent-warning: #d97706;
+  --accent-info: #4f46e5;
+  --accent-info-dim: rgba(79, 70, 229, 0.12);
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.08);
+
+  /* Radius scale — every module should snap border-radius to one of these
+     instead of inventing a new value. --radius-pill is for anything meant
+     to be fully rounded regardless of its height (chips, pills, badges). */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Spacing scale (4px base). Not yet adopted everywhere — new work should
+     use these instead of ad hoc px/rem values. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+}

@@ -1,0 +1,164 @@
+/* Dashboard module styles. Colours/fonts come from styles/variables.css
+   (loaded globally); .eyebrow, .resource-stat-grid, .resource-card, .card-
+   (label/value/meta), and .empty-note are shared primitives from
+   global.css. Everything below is specific to this page so it never
+   depends on another module's stylesheet having been loaded first. */
+
+.dashboard-page {
+  border-top: 3px solid var(--accent-info);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+.dashboard-header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.dashboard-subtitle {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.dashboard-stat-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.dashboard-attention {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.dashboard-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+
+.dashboard-panel-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.dashboard-panel-heading h2 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.dashboard-panel-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-info);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dashboard-panel-link:hover {
+  text-decoration: underline;
+}
+
+.dashboard-attention-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard-attention-row strong {
+  display: block;
+  font-size: 15px;
+}
+
+.dashboard-attention-meta {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.dashboard-category-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dashboard-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard-module-group-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.dashboard-module-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.dashboard-module-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dashboard-module-card:hover {
+  border-color: var(--accent-info);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-module-card strong {
+  font-size: 14px;
+}
+
+.dashboard-module-card span {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .dashboard-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-attention {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .dashboard-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
